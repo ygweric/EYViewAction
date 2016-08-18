@@ -16,7 +16,7 @@ static NSString *kHandlerAssociatedKey_target = @"kHandlerAssociatedKey_target";
 - (void)addTarget:(id)target action:(SEL)action {
     NSValue *selectorValue = [NSValue valueWithBytes:&action  objCType:@encode(SEL)];
     objc_setAssociatedObject(self, (__bridge const void *)(kHandlerAssociatedKey_selector),selectorValue, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    objc_setAssociatedObject(self, (__bridge const void *)(kHandlerAssociatedKey_target),target, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, (__bridge const void *)(kHandlerAssociatedKey_target),target, OBJC_ASSOCIATION_ASSIGN);
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handlerTapGesture:)];
     tapGesture.numberOfTapsRequired=1;
