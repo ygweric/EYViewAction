@@ -12,12 +12,7 @@ static NSString *kHandlerAssociatedKey_selector = @"kHandlerAssociatedKey_select
 static NSString *kHandlerAssociatedKey_target = @"kHandlerAssociatedKey_target";
 
 @implementation UIView (EYAction)
-
-- (void)dealloc {
-   for (UITapGestureRecognizer* gesture in self.gestureRecognizers) {
-       [self removeGestureRecognizer:gesture];
-   }
-}
+   
 - (void)addTarget:(id)target action:(SEL)action {
     NSValue *selectorValue = [NSValue valueWithBytes:&action  objCType:@encode(SEL)];
     objc_setAssociatedObject(self, (__bridge const void *)(kHandlerAssociatedKey_selector),selectorValue, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
